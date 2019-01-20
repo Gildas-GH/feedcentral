@@ -44,8 +44,8 @@ class RssController extends ApiController {
     public function index($userId='', $type=FeedType::SUBSCRIPTIONS, $id=0) {
         $items = $this->service->findAll($id, $type, -1, 0, true, false, $userId);
 
-        $title = 'ownCloud News Feed';
-        $description = 'all items of ' . $userId;
+        $title = 'Les liens de ' . $userId;
+        $description = 'Tous les liens partagés par ' . $userId;
         $link = $this->url->linkToRouteAbsolute('feedcentral.rss.index');
 
         return new RssResponse($items, $title, $description, $link);
