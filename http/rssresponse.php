@@ -51,6 +51,7 @@ class RssResponse extends Response {
     }
 
     private function createItems($document, $channel, $items) {
+        $i = 0;
         foreach ($items as $item) {
             $itemElement = $document->createElement('item');
 
@@ -76,6 +77,8 @@ class RssResponse extends Response {
             $itemElement->appendChild($pubDateElement);
 
             $channel->appendChild($itemElement);
+            
+            if ($i++ == 25) break;
         }
     }
 
